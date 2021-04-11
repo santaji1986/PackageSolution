@@ -42,7 +42,7 @@ class LineParserTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "(1,,�45)", "(,53,�45)", "(,,�45)" })
+	@ValueSource(strings = { "(1,,€45)", "(,53,€45)", "(,,€45)" })
 	void testGetParsedPackagesExpectedException(String indexWeightPriceStr) {
 		assertThrows(NumberFormatException.class, () -> LineParser.getParsedPackages(indexWeightPriceStr));
 	}

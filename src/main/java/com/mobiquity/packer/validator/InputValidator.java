@@ -12,9 +12,9 @@ public class InputValidator {
 	public final static Double MAX_ITEM_COST = 100.0;
 	public final static Integer ITEM_COUNT = 15;
 	static Predicate<PackageDTO> itemPredicate = item -> item.getWeight() > MAX_ITEM_WEIGHT
-												|| item.getPrice() > MAX_ITEM_COST;
+			|| item.getPrice() > MAX_ITEM_COST;
 
-	public static void validedInput(PackageDetails packageDTO) throws APIException {
+	public static Boolean validateInput(PackageDetails packageDTO) throws APIException {
 		List<PackageDTO> dtos = packageDTO.getPackageDTOs();
 		boolean isInvalidItem = dtos.stream().anyMatch(itemPredicate);
 		if (dtos.size() > ITEM_COUNT || isInvalidItem) {
@@ -25,7 +25,7 @@ public class InputValidator {
 					+ ", price should not be more than " + MAX_ITEM_COST);
 			// @formatter:on
 		}
-
+		return true;
 	}
 
 }
